@@ -1,0 +1,184 @@
+{
+    "model_name": "Fine-Tuned Deep CNN",
+    "architecture": "EnhancedCNN",
+    "trainable_parameters": 437162,
+    "accuracy": 0.9256,
+    "inference_time_seconds": 4.90592360496521,
+    "total_test_samples": 10000,
+    "hyperparameters": {
+        "model_name": "Fine-Tuned Deep CNN",
+        "output_model_path": "models/baseline_model_2.pt",
+        "metrics_output_path": "outputs/baseline_model_2_metrics.json",
+        "hyperparams_output_path": "outputs/cnn_hyperparameters.json",
+        "training_curves_path": "outputs/baseline_model_2_training_curves.png",
+        "confusion_matrix_path": "outputs/baseline_model_2_confusion_matrix.png",
+        "architecture": "EnhancedCNN",
+        "in_channels": 1,
+        "num_classes": 10,
+        "conv_channels": [
+            32,
+            64,
+            128
+        ],
+        "fc_units": 256,
+        "dropout_rate": 0.35,
+        "use_batch_norm": true,
+        "activation": "leaky_relu",
+        "augmentation": {
+            "enabled": true,
+            "horizontal_flip": true,
+            "random_crop_padding": 2
+        },
+        "epochs": 10,
+        "batch_size": 256,
+        "optimizer": "adamw",
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "lr_scheduler": "cosine",
+        "min_lr": 1e-05,
+        "label_smoothing": 0.05,
+        "early_stopping": {
+            "enabled": true,
+            "patience": 4,
+            "min_delta": 0.001
+        },
+        "save_best_only": true
+    },
+    "history": {
+        "train_loss": [
+            0.821365389806253,
+            0.6451600124394452,
+            0.602854124546051,
+            0.5764503734906514,
+            0.5614359405129045,
+            0.5485402713704992,
+            0.5346033427980211,
+            0.5260050905015734,
+            0.5175639375227469,
+            0.5131082874933879
+        ],
+        "train_acc": [
+            0.7842777777777777,
+            0.8584259259259259,
+            0.877537037037037,
+            0.8893333333333333,
+            0.8939259259259259,
+            0.898425925925926,
+            0.9043703703703704,
+            0.9075740740740741,
+            0.9117407407407407,
+            0.9137222222222222
+        ],
+        "val_loss": [
+            0.6788517162005107,
+            0.5851404700279236,
+            0.5683828217188517,
+            0.5510623958905538,
+            0.526413838704427,
+            0.5384611419041951,
+            0.48765944957733154,
+            0.4965698588689168,
+            0.48228781000773113,
+            0.48339470942815144
+        ],
+        "val_acc": [
+            0.8415,
+            0.8811666666666667,
+            0.8841666666666667,
+            0.8975,
+            0.903,
+            0.9018333333333334,
+            0.9195,
+            0.9188333333333333,
+            0.9226666666666666,
+            0.923
+        ],
+        "learning_rate": [
+            0.001,
+            0.0009757729755661011,
+            0.000905463412215599,
+            0.0007959536998847742,
+            0.000657963412215599,
+            0.000505,
+            0.0003520365877844011,
+            0.00021404630011522585,
+            0.00010453658778440107,
+            3.4227024433899005e-05
+        ]
+    },
+    "classification_report": {
+        "T-shirt/top": {
+            "precision": 0.911062906724512,
+            "recall": 0.84,
+            "f1-score": 0.8740894901144641,
+            "support": 1000.0
+        },
+        "Trouser": {
+            "precision": 0.9949596774193549,
+            "recall": 0.987,
+            "f1-score": 0.9909638554216867,
+            "support": 1000.0
+        },
+        "Pullover": {
+            "precision": 0.9354485776805251,
+            "recall": 0.855,
+            "f1-score": 0.8934169278996865,
+            "support": 1000.0
+        },
+        "Dress": {
+            "precision": 0.9385699899295066,
+            "recall": 0.932,
+            "f1-score": 0.9352734570998494,
+            "support": 1000.0
+        },
+        "Coat": {
+            "precision": 0.8659695817490495,
+            "recall": 0.911,
+            "f1-score": 0.8879142300194932,
+            "support": 1000.0
+        },
+        "Sandal": {
+            "precision": 0.9928057553956835,
+            "recall": 0.966,
+            "f1-score": 0.9792194627470857,
+            "support": 1000.0
+        },
+        "Shirt": {
+            "precision": 0.7455516014234875,
+            "recall": 0.838,
+            "f1-score": 0.7890772128060264,
+            "support": 1000.0
+        },
+        "Sneaker": {
+            "precision": 0.935700575815739,
+            "recall": 0.975,
+            "f1-score": 0.9549461312438785,
+            "support": 1000.0
+        },
+        "Bag": {
+            "precision": 0.99,
+            "recall": 0.99,
+            "f1-score": 0.99,
+            "support": 1000.0
+        },
+        "Ankle boot": {
+            "precision": 0.9736842105263158,
+            "recall": 0.962,
+            "f1-score": 0.9678068410462777,
+            "support": 1000.0
+        },
+        "accuracy": 0.9256,
+        "macro avg": {
+            "precision": 0.9283752876664174,
+            "recall": 0.9256,
+            "f1-score": 0.9262707608398447,
+            "support": 10000.0
+        },
+        "weighted avg": {
+            "precision": 0.9283752876664173,
+            "recall": 0.9256,
+            "f1-score": 0.9262707608398448,
+            "support": 10000.0
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "model_section": "cnn",
+    "saved_at": "2026-10-14T18:36:45.088031",
+    "hyperparameters": {
+        "model_name": "Fine-Tuned Deep CNN",
+        "output_model_path": "models/baseline_model_2.pt",
+        "metrics_output_path": "outputs/baseline_model_2_metrics.json",
+        "hyperparams_output_path": "outputs/cnn_hyperparameters.json",
+        "training_curves_path": "outputs/baseline_model_2_training_curves.png",
+        "confusion_matrix_path": "outputs/baseline_model_2_confusion_matrix.png",
+        "architecture": "EnhancedCNN",
+        "in_channels": 1,
+        "num_classes": 10,
+        "conv_channels": [
+            32,
+            64,
+            128
+        ],
+        "fc_units": 256,
+        "dropout_rate": 0.35,
+        "use_batch_norm": true,
+        "activation": "leaky_relu",
+        "augmentation": {
+            "enabled": true,
+            "horizontal_flip": true,
+            "random_crop_padding": 2
+        },
+        "epochs": 10,
+        "batch_size": 256,
+        "optimizer": "adamw",
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "lr_scheduler": "cosine",
+        "min_lr": 1e-05,
+        "label_smoothing": 0.05,
+        "early_stopping": {
+            "enabled": true,
+            "patience": 4,
+            "min_delta": 0.001
+        },
+        "save_best_only": true
+    }
+}

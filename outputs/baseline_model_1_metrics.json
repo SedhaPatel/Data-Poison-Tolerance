@@ -1,0 +1,93 @@
+{
+    "model_name": "Fine-Tuned Random Forest",
+    "accuracy": 0.8875,
+    "inference_time_seconds": 0.1505739688873291,
+    "total_test_samples": 10000,
+    "hyperparameters": {
+        "n_estimators": 200,
+        "criterion": "gini",
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "bootstrap": true,
+        "random_state": 42,
+        "n_jobs": -1,
+        "verbose": 1
+    },
+    "classification_report": {
+        "T-shirt/top": {
+            "precision": 0.8207816968541468,
+            "recall": 0.861,
+            "f1-score": 0.8404099560761347,
+            "support": 1000.0
+        },
+        "Trouser": {
+            "precision": 0.9908350305498982,
+            "recall": 0.973,
+            "f1-score": 0.9818365287588294,
+            "support": 1000.0
+        },
+        "Pullover": {
+            "precision": 0.8096676737160121,
+            "recall": 0.804,
+            "f1-score": 0.806823883592574,
+            "support": 1000.0
+        },
+        "Dress": {
+            "precision": 0.8904761904761904,
+            "recall": 0.935,
+            "f1-score": 0.9121951219512195,
+            "support": 1000.0
+        },
+        "Coat": {
+            "precision": 0.8055299539170507,
+            "recall": 0.874,
+            "f1-score": 0.8383693045563549,
+            "support": 1000.0
+        },
+        "Sandal": {
+            "precision": 0.9772727272727273,
+            "recall": 0.946,
+            "f1-score": 0.9613821138211383,
+            "support": 1000.0
+        },
+        "Shirt": {
+            "precision": 0.7560975609756098,
+            "recall": 0.62,
+            "f1-score": 0.6813186813186813,
+            "support": 1000.0
+        },
+        "Sneaker": {
+            "precision": 0.9213372664700098,
+            "recall": 0.937,
+            "f1-score": 0.9291026276648487,
+            "support": 1000.0
+        },
+        "Bag": {
+            "precision": 0.953125,
+            "recall": 0.976,
+            "f1-score": 0.9644268774703557,
+            "support": 1000.0
+        },
+        "Ankle boot": {
+            "precision": 0.9377470355731226,
+            "recall": 0.949,
+            "f1-score": 0.9433399602385686,
+            "support": 1000.0
+        },
+        "accuracy": 0.8875,
+        "macro avg": {
+            "precision": 0.8862870135804768,
+            "recall": 0.8875,
+            "f1-score": 0.8859205055448705,
+            "support": 10000.0
+        },
+        "weighted avg": {
+            "precision": 0.8862870135804768,
+            "recall": 0.8875,
+            "f1-score": 0.8859205055448705,
+            "support": 10000.0
+        }
+    }
+}
