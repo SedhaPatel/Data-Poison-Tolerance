@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Data & Archives
+archive.zip
+data/
+*.csv
+*.parquet
+*.h5
+
+# Models & Outputs
+models/
+outputs/
+*.joblib
+*.pkl
+*.pt
+*.pth
+*.onnx
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

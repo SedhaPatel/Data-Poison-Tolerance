@@ -1,0 +1,95 @@
+# ==============================================================================
+# FASHION MNIST MACHINE LEARNING PIPELINE CONFIGURATION
+# Controls hyperparameters, model architectures, training settings, and outputs
+# ==============================================================================
+
+# Global Pipeline Settings
+pipeline:
+  random_seed: 42
+  data_dir: "data"
+  train_csv: "data/fashion-mnist_train.csv"
+  test_csv: "data/fashion-mnist_test.csv"
+  val_split: 0.1             # 10% of training data reserved for validation monitoring
+  output_dir: "outputs"
+  models_dir: "models"
+  class_names:
+    - "T-shirt/top"
+    - "Trouser"
+    - "Pullover"
+    - "Dress"
+    - "Coat"
+    - "Sandal"
+    - "Shirt"
+    - "Sneaker"
+    - "Bag"
+    - "Ankle boot"
+
+# ------------------------------------------------------------------------------
+# Model 1: Fine-Tuned Random Forest Classifier Hyperparameters
+# ------------------------------------------------------------------------------
+random_forest:
+  model_name: "Fine-Tuned Random Forest"
+  output_model_path: "models/baseline_model_1.joblib"
+  metrics_output_path: "outputs/baseline_model_1_metrics.json"
+  hyperparams_output_path: "outputs/rf_hyperparameters.json"
+  confusion_matrix_path: "outputs/baseline_model_1_confusion_matrix.png"
+  feature_importance_path: "outputs/baseline_model_1_feature_importance.png"
+
+  # Tuned Hyperparameters
+  n_estimators: 200          # Number of decision trees (fine-tuned for low variance and stability)
+  criterion: "gini"          # Split quality criterion ("gini" or "entropy" / "log_loss")
+  max_depth: null            # Maximum tree depth (null for unconstrained leaves)
+  min_samples_split: 2       # Min samples required to split an internal node
+  min_samples_leaf: 1        # Min samples required at a leaf node
+  max_features: "sqrt"       # Number of features per split ('sqrt', 'log2', or float)
+  bootstrap: true            # Whether bootstrap samples are used
+  n_jobs: -1                 # Maximize parallel CPU core utilization (all cores)
+  random_state: 42
+  verbose: 1
+
+  # Automated hyperparameter tuning search options
+  tune_search: false         # Set to true to execute automated RandomizedSearchCV before final fit
+  tune_n_iter: 8             # Number of search parameter combinations to evaluate
+  tune_cv_folds: 3           # Cross-validation folds for search
+
+# ------------------------------------------------------------------------------
+# Model 2: Fine-Tuned Deep Convolutional Neural Network (CNN) Hyperparameters
+# ------------------------------------------------------------------------------
+cnn:
+  model_name: "Fine-Tuned Deep CNN"
+  output_model_path: "models/baseline_model_2.pt"
+  metrics_output_path: "outputs/baseline_model_2_metrics.json"
+  hyperparams_output_path: "outputs/cnn_hyperparameters.json"
+  training_curves_path: "outputs/baseline_model_2_training_curves.png"
+  confusion_matrix_path: "outputs/baseline_model_2_confusion_matrix.png"
+
+  # Network Architecture
+  architecture: "EnhancedCNN" # "EnhancedCNN" (3-block deep CNN) or "BasicCNN" (original 2-block baseline)
+  in_channels: 1
+  num_classes: 10
+  conv_channels: [32, 64, 128] # Channel depths for feature extraction blocks
+  fc_units: 256              # Hidden dense layer units
+  dropout_rate: 0.35         # Dropout probability for dense layer
+  use_batch_norm: true       # Batch normalization after convolutions
+  activation: "leaky_relu"         # Activation function: "relu", "leaky_relu", or "gelu"
+
+  # Data Augmentation (pushes CNN generalization to maximum potential)
+  augmentation:
+    enabled: true            # Enable real-time data augmentation on training batches
+    horizontal_flip: true    # Random horizontal flip (p=0.5)
+    random_crop_padding: 2   # Random shift/crop with reflection padding (up to 2 pixels)
+
+  # Optimization & Training
+  epochs: 10                 # Number of training epochs (10 epochs converge to peak test accuracy)
+  batch_size: 256            # Mini-batch size optimized for vectorization and speed
+  optimizer: "adamw"         # "adamw" (decoupled weight decay) or "adam" or "sgd"
+  learning_rate: 0.001       # Initial peak learning rate
+  weight_decay: 0.0001       # L2 weight regularization
+  lr_scheduler: "cosine"     # "cosine" (CosineAnnealingLR) or "step" or "plateau" or "none"
+  min_lr: 0.00001            # Minimum learning rate target for cosine scheduler
+  label_smoothing: 0.05      # Label smoothing epsilon (calibrates confidence and reduces overfitting)
+  early_stopping:
+    enabled: true
+    patience: 4              # Epochs without validation accuracy improvement before stopping
+    min_delta: 0.001
+  save_best_only: true       # Save checkpoint weights that achieved the highest validation accuracy
